@@ -96,9 +96,22 @@
 
 <script>
   const targets = document.querySelectorAll('[data-reveal]');
-  const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.2 });
-  targets.forEach(t => io.observe(t));
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ targets.forEach(t => t.classList.add('in')); }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ entry.target.classList.add('in'); }
+    });
+  }, { threshold: 0 });
+  targets.forEach(t=>{
+    const rect = t.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      t.classList.add('in');
+    } else {
+      io.observe(t);
+    }
+  });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    targets.forEach(t => t.classList.add('in'));
+  }
 </script>
 </body>
 </html>

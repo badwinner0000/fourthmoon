@@ -321,17 +321,20 @@
 </div>
 
 <script>
-  // Scroll-reveal engine — mirrors the Carrd "onvisible" effects (fade-in, wipe-down, wipe-right, flip-right)
   const targets = document.querySelectorAll('[data-reveal]');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('in');
-      }
+      if(entry.isIntersecting){ entry.target.classList.add('in'); }
     });
-  }, { threshold: 0.25 });
-  targets.forEach(t => io.observe(t));
-
+  }, { threshold: 0 });
+  targets.forEach(t=>{
+    const rect = t.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      t.classList.add('in');
+    } else {
+      io.observe(t);
+    }
+  });
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     targets.forEach(t => t.classList.add('in'));
   }
