@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ficha — Personagem 1 · Fourth Moon</title>
+<link href="https://fonts.googleapis.com/css2?display=swap&family=Archivo:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1424; --ink:#E9E3D6; --line:#B99A5B;
+    --mark-bg:#B99A5B; --mark-ink:#0D1424; --font:'Archivo', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1; -webkit-text-size-adjust:none; min-height:100vh; }
+  ul{list-style:none;}
+  a{color:inherit; text-decoration:underline; transition:color .25s ease;}
+  .site-wrapper{ display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:4rem 1rem; }
+  .inner{ width:40rem; max-width:100%; }
+  .inner > * + *{ margin-top:2rem; }
+
+  .hero-image{ text-align:center; }
+  .hero-image .frame{ display:inline-block; width:14rem; max-width:70vw; aspect-ratio:3/4; position:relative; background:rgba(233,227,214,0.05); border:1px solid rgba(185,154,91,.4); }
+  .hero-image img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .divider{ display:flex; justify-content:center; align-items:center; min-height:1rem; }
+  .divider::before{ content:''; display:block; width:1px; height:4rem; background:var(--line); }
+
+  .eyebrow{ text-align:center; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.03em; line-height:2.5; color:#B99A5B; }
+  h1.title{ text-align:center; font-size:clamp(2.2rem, 7vw, 3.4rem); font-weight:900; letter-spacing:-0.04em; line-height:0.9; }
+  .url-line{ text-align:center; text-transform:uppercase; font-size:0.85rem; line-height:2.5; }
+
+  .back-link{ display:block; text-align:center; text-transform:uppercase; font-size:0.72rem; letter-spacing:.15em; text-decoration:none; color:rgba(233,227,214,0.6); }
+  .back-link:hover{ color:#B99A5B; }
+
+  .section-heading{ font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; color:#B99A5B; font-weight:700; }
+
+  .stat-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:0; border-top:1px solid rgba(233,227,214,.24); border-left:1px solid rgba(233,227,214,.24); }
+  .stat{ padding:1rem; border-right:1px solid rgba(233,227,214,.24); border-bottom:1px solid rgba(233,227,214,.24); text-align:center; }
+  .stat .k{ font-size:.65rem; text-transform:uppercase; letter-spacing:.1em; color:rgba(233,227,214,.6); margin-bottom:.4rem; }
+  .stat .v{ font-size:1.6rem; font-weight:900; color:#B99A5B; }
+
+  .bio-text{ font-size:.82rem; line-height:1.8; text-align:justify; }
+  .bio-text + .bio-text{ margin-top:1rem; }
+
+  .field-list{ display:flex; flex-direction:column; gap:0; }
+  .field-row{ display:flex; justify-content:space-between; gap:1rem; padding:.65rem 0; border-top:1px solid rgba(233,227,214,.24); font-size:.76rem; text-transform:uppercase; }
+  .field-row:first-child{ border-top:2px solid var(--line); }
+  .field-row .k{ color:rgba(233,227,214,.6); letter-spacing:.08em; }
+  .field-row .v{ text-align:right; font-weight:700; }
+
+  .trait-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:1rem; }
+  .trait{ border:1px solid rgba(185,154,91,.4); padding:1rem; }
+  .trait .name{ font-weight:900; text-transform:uppercase; font-size:.78rem; margin-bottom:.4rem; color:#B99A5B; }
+  .trait .desc{ font-size:.7rem; line-height:1.5; text-transform:none; color:rgba(233,227,214,.85); }
+
+  .credit{ text-align:center; margin-top:0.75rem; }
+  .credit span{ font-size:0.7rem; color:rgba(233,227,214,0.5); }
+
+  .buttons{ display:flex; justify-content:center; }
+  .buttons a{
+    display:inline-block; height:2.5rem; line-height:2.5rem; padding:0 1.5rem;
+    text-transform:uppercase; font-size:0.78rem; letter-spacing:0.1em;
+    background:#B99A5B; color:#0D1424; text-decoration:none; font-weight:700;
+    transition:transform .25s ease;
+  }
+  .buttons a:hover{ transform:scale(1.06); }
+
+  [data-reveal]{ }
+  [data-reveal="fade-in"]{ opacity:0; transition:opacity 1s ease; }
+  [data-reveal="fade-in"].in{ opacity:1; }
+  [data-reveal="wipe-down"]{ opacity:0; clip-path:inset(0 0 100% 0); transition:opacity .6s ease, clip-path 1s ease; }
+  [data-reveal="wipe-down"].in{ opacity:1; clip-path:inset(0 0 0 0); }
+  [data-reveal="wipe-right"]{ opacity:0; clip-path:inset(0 100% 0 0); transition:opacity .6s ease, clip-path 1s ease; }
+  [data-reveal="wipe-right"].in{ opacity:1; clip-path:inset(0 0 0 0); }
+  [data-reveal="flip-right"]{ opacity:0; transform:perspective(1000px) rotateY(15deg); transform-origin:50% 50%; transition:opacity 1s ease, transform 1s ease; }
+  [data-reveal="flip-right"].in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1 !important; transform:none !important; clip-path:none !important; transition:none !important; } }
+  @media (max-width:640px){ .inner{ width:100%; } .stat-grid{ grid-template-columns:repeat(2,1fr); } }
+</style>
+</head>
+<body>
+<div class="site-wrapper">
+  <div class="inner">
+
+    <a class="back-link" href="index.html">← voltar ao arquivo</a>
+
+    <div class="hero-image" data-reveal="fade-in">
+      <span class="frame"><img src="https://placehold.co/420x560/0D1424/E9E3D6?text=Personagem+1" alt="Retrato da Personagem 1"></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="eyebrow" data-reveal="flip-right">house of nyx · calouro(a)</p>
+    <h1 class="title" data-reveal="wipe-right">PERSONAGEM 1</h1>
+    <p class="url-line" data-reveal="flip-right">mérito, não herança</p>
+
+    <div class="divider"></div>
+
+    <div data-reveal="wipe-down">
+      <p class="section-heading">dossiê.</p>
+      <div class="field-list">
+        <div class="field-row"><span class="k">nome completo</span><span class="v">—</span></div>
+        <div class="field-row"><span class="k">idade</span><span class="v">—</span></div>
+        <div class="field-row"><span class="k">curso</span><span class="v">—</span></div>
+        <div class="field-row"><span class="k">sociedade</span><span class="v">House of Nyx</span></div>
+        <div class="field-row"><span class="k">faceclaim</span><span class="v">—</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div data-reveal="wipe-down">
+      <p class="section-heading">atributos. <span style="text-transform:none; font-weight:400; color:rgba(233,227,214,.5);">( sistema slasher — d6 )</span></p>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">força</div><div class="v">—</div></div>
+        <div class="stat"><div class="k">agilidade</div><div class="v">—</div></div>
+        <div class="stat"><div class="k">instinto</div><div class="v">—</div></div>
+        <div class="stat"><div class="k">presença</div><div class="v">—</div></div>
+        <div class="stat"><div class="k">sanidade</div><div class="v">—</div></div>
+        <div class="stat"><div class="k">resistência</div><div class="v">—</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div data-reveal="wipe-down">
+      <p class="section-heading">biografia.</p>
+      <p class="bio-text">Ser aprovada na Wellington University foi resultado de anos de dedicação. Este espaço é reservado para a biografia completa da Personagem 1 — sua origem, sua rotina antes do convite, e o que a levou até o Retiro das Sociedades.</p>
+      <p class="bio-text">Continue o histórico aqui: relações de família, conquistas, medos, e o que ela ainda não sabe sobre a House of Nyx.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div data-reveal="wipe-down">
+      <p class="section-heading">traços & habilidades.</p>
+      <div class="trait-grid">
+        <div class="trait"><div class="name">traço 01</div><div class="desc">descrição breve do traço, vantagem ou marca pessoal da personagem.</div></div>
+        <div class="trait"><div class="name">traço 02</div><div class="desc">descrição breve do traço, vantagem ou marca pessoal da personagem.</div></div>
+        <div class="trait"><div class="name">medo</div><div class="desc">o que a Personagem 1 mais teme dentro da narrativa.</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="buttons" data-reveal="fade-in">
+      <a href="index.html">voltar ao menu</a>
+    </div>
+
+    <div class="credit" data-reveal="fade-in"><span>ficha de personagem · fourth moon</span></div>
+
+  </div>
+</div>
+
+<script>
+  const targets = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.25 });
+  targets.forEach(t => io.observe(t));
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ targets.forEach(t => t.classList.add('in')); }
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capítulo 05 · Fourth Moon</title>
+<link href="https://fonts.googleapis.com/css2?display=swap&family=Archivo:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1424; --ink:#E9E3D6; --line:#B99A5B;
+    --font:'Archivo', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1; -webkit-text-size-adjust:none; min-height:100vh; }
+  a{color:inherit; text-decoration:underline; transition:color .25s ease;}
+  .site-wrapper{ display:flex; flex-direction:column; align-items:center; min-height:100vh; padding:4rem 1rem; }
+  .inner{ width:38rem; max-width:100%; }
+  .inner > * + *{ margin-top:2rem; }
+
+  .back-link{ display:block; text-align:center; text-transform:uppercase; font-size:0.72rem; letter-spacing:.15em; text-decoration:none; color:rgba(233,227,214,0.6); }
+  .back-link:hover{ color:#B99A5B; }
+
+  .divider{ display:flex; justify-content:center; align-items:center; min-height:1rem; }
+  .divider::before{ content:''; display:block; width:1px; height:4rem; background:var(--line); }
+
+  .chapter-eyebrow{ text-align:center; text-transform:uppercase; font-size:0.8rem; letter-spacing:0.15em; color:#B99A5B; line-height:2.2; }
+  .chapter-number{ text-align:center; font-size:3.4rem; font-weight:900; letter-spacing:-0.03em; line-height:0.9; color:rgba(233,227,214,.15); }
+  h1.chapter-title{
+    text-align:center; font-size:clamp(1.8rem, 6vw, 2.6rem); font-weight:900;
+    letter-spacing:-0.02em; line-height:1.1; min-height:1.4em;
+    border-bottom:1px dashed rgba(233,227,214,.35); padding-bottom:0.8rem;
+  }
+  .chapter-title:empty::after{ content:'\00a0'; }
+
+  .chapter-body{
+    font-size:0.92rem; line-height:2; text-align:justify;
+    min-height:12rem;
+  }
+  .chapter-body p{ margin-bottom:1.4rem; }
+  .chapter-body p:empty{ min-height:1.4rem; }
+
+  .navrow{ display:flex; justify-content:space-between; text-transform:uppercase; font-size:.72rem; letter-spacing:.08em; }
+  .navrow a{ text-decoration:none; color:rgba(233,227,214,.7); }
+  .navrow a:hover{ color:#B99A5B; }
+
+  .buttons{ display:flex; justify-content:center; }
+  .buttons a{
+    display:inline-block; height:2.5rem; line-height:2.5rem; padding:0 1.5rem;
+    text-transform:uppercase; font-size:0.78rem; letter-spacing:0.1em;
+    background:#B99A5B; color:#0D1424; text-decoration:none; font-weight:700;
+    transition:transform .25s ease;
+  }
+  .buttons a:hover{ transform:scale(1.06); }
+
+  [data-reveal]{ }
+  [data-reveal="fade-in"]{ opacity:0; transition:opacity 1s ease; }
+  [data-reveal="fade-in"].in{ opacity:1; }
+  [data-reveal="wipe-down"]{ opacity:0; clip-path:inset(0 0 100% 0); transition:opacity .6s ease, clip-path 1s ease; }
+  [data-reveal="wipe-down"].in{ opacity:1; clip-path:inset(0 0 0 0); }
+  [data-reveal="wipe-right"]{ opacity:0; clip-path:inset(0 100% 0 0); transition:opacity .6s ease, clip-path 1s ease; }
+  [data-reveal="wipe-right"].in{ opacity:1; clip-path:inset(0 0 0 0); }
+  @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1 !important; transform:none !important; clip-path:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+<div class="site-wrapper">
+  <div class="inner">
+
+    <a class="back-link" href="index.html">← voltar ao arquivo</a>
+
+    <div class="divider"></div>
+
+    <p class="chapter-eyebrow" data-reveal="fade-in">fourth moon · arquivo da história</p>
+    <p class="chapter-number" data-reveal="fade-in">05</p>
+    <h1 class="chapter-title" data-reveal="wipe-right" contenteditable="true" data-placeholder="Capítulo"></h1>
+
+    <div class="divider"></div>
+
+    <div class="chapter-body" data-reveal="wipe-down" contenteditable="true">
+      <p>&nbsp;</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="navrow" data-reveal="fade-in">
+      <a href="capitulo-04.html">← capítulo 04</a>
+      <a href="index.html">arquivo ↑</a>
+    </div>
+
+    <div class="buttons" data-reveal="fade-in">
+      <a href="index.html">voltar ao menu</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const targets = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.2 });
+  targets.forEach(t => io.observe(t));
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ targets.forEach(t => t.classList.add('in')); }
+</script>
+</body>
+</html>

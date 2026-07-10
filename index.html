@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fourth Moon — Wellington University</title>
+<link href="https://fonts.googleapis.com/css2?display=swap&family=Archivo:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1424;
+    --ink:#E9E3D6;
+    --line:#B99A5B;
+    --mark-bg:#B99A5B;
+    --mark-ink:#0D1424;
+    --font:'Archivo', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font);
+    line-height:1;
+    -webkit-text-size-adjust:none;
+    min-height:100vh;
+  }
+  ul{list-style:none;}
+  a{color:inherit; text-decoration:underline; transition:color .25s ease;}
+
+  .site-wrapper{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    min-height:100vh; padding:4rem 1rem;
+  }
+  .inner{ width:40rem; max-width:100%; }
+  .inner > * + *{ margin-top:2rem; }
+
+  /* ---------- image ---------- */
+  .hero-image{ text-align:center; }
+  .hero-image .frame{
+    display:inline-block;
+    width:17rem;
+    max-width:78vw;
+    aspect-ratio:1/1;
+    position:relative;
+    background:transparent;
+  }
+  .hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+    filter:drop-shadow(0 0 18px rgba(233,227,214,.18))
+           drop-shadow(0 0 42px rgba(185,154,91,.14));
+  }
+
+  /* ---------- divider ---------- */
+  .divider{
+    display:flex; justify-content:center; align-items:center;
+    min-height:1rem;
+  }
+  .divider::before{
+    content:''; display:block; width:1px; height:4rem; background:var(--line);
+  }
+
+  /* ---------- hero text ---------- */
+  .eyebrow{
+    text-align:center; text-transform:uppercase;
+    font-size:0.85rem; letter-spacing:0.03em; line-height:2.5;
+  }
+  h1.title{
+    text-align:center; font-size:clamp(2.6rem, 8vw, 4.2rem);
+    font-weight:900; letter-spacing:-0.045em; line-height:0.85;
+  }
+  .url-line{
+    text-align:center; text-transform:uppercase; font-size:0.85rem; line-height:2.5;
+  }
+
+  /* ---------- 3col ---------- */
+  .columns{
+    display:flex; gap:2rem; flex-wrap:wrap;
+  }
+  .columns > div{ flex:1 1 0; min-width:220px; }
+  .flavor-block{
+    text-align:justify; text-transform:uppercase;
+    font-size:0.72rem; line-height:1.5; letter-spacing:0.02em;
+  }
+  .flavor-block u strong{ text-decoration:underline; }
+  .flavor-block mark{ background:var(--mark-bg); color:var(--mark-ink); padding:0 0.15em; }
+
+  /* ---------- connections / mains ---------- */
+  .connections{ display:flex; flex-direction:column; gap:1.6rem; }
+  .connection{
+    text-transform:uppercase; font-size:0.78rem; line-height:1.6;
+  }
+  .connection .head{ display:flex; flex-wrap:wrap; gap:0.6rem; align-items:baseline; margin-bottom:0.2rem; }
+  .connection .head .name{ text-decoration:underline; font-weight:700; }
+  .connection .head .fc{ font-style:italic; font-weight:400; text-transform:none; font-size:0.85em; }
+  .connection .head .pin{ margin-left:auto; }
+  .connection .tags{ display:flex; flex-wrap:wrap; gap:0 0.4rem; margin-top:0.4rem; font-size:0.7rem; }
+  .connection .tags li::after{ content:'·'; margin-left:0.4rem; opacity:0.5; }
+  .connection .tags li:last-child::after{ content:''; }
+
+  /* ---------- tables ---------- */
+  .table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table{ width:100%; border-collapse:collapse; text-align:left; text-transform:uppercase; font-size:0.72rem; }
+  thead{ border-bottom:2px solid var(--line); }
+  thead th{ font-weight:900; line-height:2.5; }
+  tbody tr{ border-top:1px solid rgba(233,227,214,0.24); }
+  tbody tr:first-child{ border-top:0; }
+  td, th{ padding:0.3rem 0.6rem 0.3rem 0; line-height:1.5; }
+  .key-table td{ padding-right:1rem; white-space:nowrap; }
+  .key-table strong{ margin-right:0.3rem; }
+
+  /* ---------- buttons + credit ---------- */
+  .buttons{ display:flex; justify-content:center; }
+  .buttons a{
+    display:inline-block; height:2.5rem; line-height:2.5rem; padding:0 1.25rem;
+    text-transform:uppercase; font-size:0.78rem; letter-spacing:0.02em;
+    background:var(--ink); color:var(--bg); text-decoration:none;
+    transition:transform .25s ease;
+  }
+  .buttons a:hover{ transform:scale(1.08); }
+
+  .credit{
+    text-align:center; margin-top:0.75rem;
+  }
+  .credit span{ font-size:0.7rem; color:rgba(233,227,214,0.5); }
+  .credit a{ text-decoration:none; }
+  .credit a:hover{ color:var(--ink); }
+
+  /* ================= SCROLL-REVEAL EFFECT ENGINE ================= */
+  [data-reveal]{ }
+  [data-reveal="fade-in"]{ opacity:0; transition:opacity 1s ease; }
+  [data-reveal="fade-in"].in{ opacity:1; }
+
+  [data-reveal="wipe-down"]{
+    opacity:0;
+    clip-path:inset(0 0 100% 0);
+    transition:opacity .6s ease, clip-path 1s ease;
+  }
+  [data-reveal="wipe-down"].in{ opacity:1; clip-path:inset(0 0 0 0); }
+
+  [data-reveal="wipe-right"]{
+    opacity:0;
+    clip-path:inset(0 100% 0 0);
+    transition:opacity .6s ease, clip-path 1s ease;
+  }
+  [data-reveal="wipe-right"].in{ opacity:1; clip-path:inset(0 0 0 0); }
+
+  [data-reveal="flip-right"]{
+    opacity:0;
+    transform:perspective(1000px) rotateY(15deg);
+    transform-origin:50% 50%;
+    transition:opacity 1s ease, transform 1s ease;
+  }
+  [data-reveal="flip-right"].in{ opacity:1; transform:none; }
+
+  [data-stagger] > *{ transition-delay:calc(var(--i, 0) * 90ms); }
+
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{ opacity:1 !important; transform:none !important; clip-path:none !important; transition:none !important; }
+  }
+
+  @media (max-width:640px){
+    .inner{ width:100%; }
+    .columns{ flex-direction:column; }
+    .connection .head .pin{ margin-left:0; }
+  }
+
+  .portal-table a{display:block; color:inherit; text-decoration:none;}
+  .portal-table tbody tr{transition:background .2s ease, transform .2s ease;}
+  .portal-table tbody tr:hover{background:rgba(185,154,91,.10);}
+  .portal-table .open-label{font-weight:900; text-decoration:underline; text-underline-offset:.18rem;}
+  .chapter-list{display:flex; flex-direction:column; gap:.9rem;}
+  .chapter-row{display:grid; grid-template-columns:2.2rem 7rem 1fr; gap:.75rem; align-items:center; padding:.75rem 0; border-top:1px solid rgba(233,227,214,.24); text-transform:uppercase; font-size:.76rem; line-height:1.4; text-decoration:none; color:inherit; transition:padding-left .3s ease, color .3s ease;}
+  .chapter-row:hover{ padding-left:.5rem; color:#B99A5B; }
+  .chapter-row:first-child{border-top:2px solid var(--line);}
+  .chapter-number{font-weight:900; color:#B99A5B;}
+  .chapter-type{font-weight:700;}
+  .chapter-title{min-height:1.1rem; border-bottom:1px solid rgba(233,227,214,.5);}
+  .section-heading{font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem;}
+  @media(max-width:640px){.chapter-row{grid-template-columns:2rem 5.5rem 1fr;}}
+
+</style>
+</head>
+<body id="top">
+
+<div class="site-wrapper">
+  <div class="inner">
+
+    <!-- ============ HERO IMAGE ============ -->
+    <div class="hero-image" data-reveal="fade-in">
+      <span class="frame">
+        <img src="https://64.media.tumblr.com/71a6ed6ea651d42392c8f473c6ece77f/af524833049baa72-7b/s1280x1920/aa2d643d343f2bb88677473d0d881cd1d480b8c3.pnj" alt="Lua cheia de Fourth Moon">
+      </span>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="eyebrow" data-reveal="flip-right">wellington university · established 1765</p>
+    <h1 class="title" data-reveal="wipe-right">FOURTH MOON</h1>
+    <p class="url-line" data-reveal="flip-right">um rpg de horror dark academia</p>
+
+    <div class="divider"></div>
+
+    <!-- ============ 3-COLUMN FLAVOR TEXT ============ -->
+    <div class="columns" data-stagger>
+      <div data-reveal="flip-right" style="--i:0">
+        <p class="flavor-block">
+          <u><strong>[001.] WELLINGTON UNIVERSITY.</strong></u><br>
+          Às margens da costa de Rhode Island, a Wellington University reúne edifícios de pedra, bibliotecas centenárias e uma tradição acadêmica que atravessa gerações. Por seus corredores passaram figuras que mais tarde ocupariam palácios, tribunais, gabinetes, laboratórios e conselhos de grandes empresas.
+        </p>
+      </div>
+      <div data-reveal="flip-right" style="--i:1">
+        <p class="flavor-block">
+          <u><strong>[002.] AS SOCIEDADES.</strong></u><br>
+          A Argent Society e a House of Nyx são as organizações mais disputadas do campus. Para muitas famílias, o vínculo com as duas casas atravessa gerações. Para quem vem de fora desse círculo, um convite é raro o bastante para se tornar assunto por todo o semestre.
+        </p>
+      </div>
+      <div data-reveal="flip-right" style="--i:2">
+        <p class="flavor-block">
+          <u><strong>[003.] O RETIRO.</strong></u><br>
+          A 248ª edição do tradicional Retiro das Sociedades reúne novos integrantes e alumni em uma ilha particular durante quatro dias. Recepções formais, jantares à luz de velas e costumes preservados por séculos compõem uma celebração à qual poucos recebem acesso. <mark>&nbsp;Algumas portas só se abrem uma vez.&nbsp;</mark>
+        </p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ============ STORY / SOCIETIES ============ -->
+    <div class="connections">
+      <div class="connection" data-reveal="wipe-down">
+        <div class="head"><span class="name">the story.</span><span class="fc">( prestígio, herança, ritual. )</span><span class="pin">01.</span></div>
+        <p>Ser aprovada na Wellington University foi resultado de anos de dedicação. Receber um convite para a House of Nyx, porém, era algo que a Personagem 1 jamais esperou. A irmandade costuma escolher entre sobrenomes conhecidos, famílias antigas e jovens que cresceram compreendendo regras que nunca precisaram ser explicadas.</p>
+        <p style="margin-top:.75rem;">Para a Personagem 2, aquele universo sempre foi familiar. Sua família mantém laços antigos com a Argent Society e com a House of Nyx, espalhados por diferentes gerações. Embora ele próprio pertença à Argent, cresceu acompanhando parentes nas duas sociedades e ouvindo versões cuidadosamente incompletas de suas tradições.</p>
+        <p style="margin-top:.75rem;">Os dois se encontram durante a 248ª edição do Retiro das Sociedades, realizado em uma ilha particular na costa de Rhode Island. Durante quatro dias, estudantes e alumni dividem a mesma mesa, renovam alianças antigas e recebem os novos nomes que passarão a integrar aquele círculo. Longe do campus, cercados pelo mar e por costumes que ninguém parece disposto a questionar, a diferença entre privilégio e pertencimento começa a se tornar menos nítida.</p>
+        <ul class="tags"><li>dark academia</li><li>mistério</li><li>horror</li></ul>
+      </div>
+      <div class="connection" data-reveal="wipe-down">
+        <div class="head"><span class="name">argent society.</span><span class="fc">( fraternidade masculina. )</span><span class="pin">02.</span></div>
+        <p>A Argent Society ocupa uma das mansões mais antigas do campus. Seus salões recebem debates, jantares privados, competições, eventos beneficentes e festas que costumam definir a vida social da Wellington University antes mesmo de aparecerem nos jornais estudantis.</p>
+        <p style="margin-top:.75rem;">A fraternidade cultiva uma imagem de liderança, disciplina e lealdade. Grande parte de seus integrantes pertence a famílias ligadas à sociedade há décadas, mas convites externos já aconteceram — raramente, e sempre cercados de especulação. Seu presidente é responsável por preservar os costumes da casa e representar seus membros diante dos alumni.</p>
+        <ul class="tags"><li>tradição</li><li>influência</li><li>lealdade</li></ul>
+      </div>
+      <div class="connection" data-reveal="wipe-down">
+        <div class="head"><span class="name">house of nyx.</span><span class="fc">( irmandade feminina. )</span><span class="pin">03.</span></div>
+        <p>A House of Nyx é conhecida pela discrição de suas integrantes e pela força de uma rede que se estende muito além do campus. Políticas, pesquisadoras, executivas, artistas e filantropas continuam ligadas à irmandade anos depois da formatura, abrindo caminhos que raramente ficam visíveis para quem observa de fora.</p>
+        <p style="margin-top:.75rem;">A seleção é conduzida em absoluto sigilo. Algumas candidatas carregam sobrenomes presentes nos arquivos da casa há gerações; outras surgem sem qualquer ligação anterior e provocam curiosidade imediata. Em ambos os casos, o convite chega sem explicações e exige uma resposta rápida.</p>
+        <ul class="tags"><li>discrição</li><li>ambição</li><li>prestígio</li></ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ============ RPG PORTAL ============ -->
+    <div class="table-wrap" data-reveal="wipe-down">
+      <table class="portal-table">
+        <thead><tr><th>ARQUIVO DO RPG.</th><th>DETALHE.</th><th>STATUS.</th><th>ACESSO.</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><a href="system.html" target="_blank" rel="noopener"><span class="open-label">system</span></a></td>
+            <td><a href="system.html" target="_blank" rel="noopener">sistema slasher modificado em d6</a></td>
+            <td><a href="system.html" target="_blank" rel="noopener">ativo</a></td>
+            <td><a href="system.html" target="_blank" rel="noopener">abrir arquivo ↗</a></td>
+          </tr>
+          <tr>
+            <td><a href="personagem1.html" target="_blank" rel="noopener"><span class="open-label">personagem 1</span></a></td>
+            <td><a href="personagem1.html" target="_blank" rel="noopener">house of nyx</a></td>
+            <td><a href="personagem1.html" target="_blank" rel="noopener">protagonista</a></td>
+            <td><a href="personagem1.html" target="_blank" rel="noopener">abrir ficha ↗</a></td>
+          </tr>
+          <tr>
+            <td><a href="personagem2.html" target="_blank" rel="noopener"><span class="open-label">personagem 2</span></a></td>
+            <td><a href="personagem2.html" target="_blank" rel="noopener">argent society</a></td>
+            <td><a href="personagem2.html" target="_blank" rel="noopener">protagonista</a></td>
+            <td><a href="personagem2.html" target="_blank" rel="noopener">abrir ficha ↗</a></td>
+          </tr>
+          <tr>
+            <td><a href="npcs.html" target="_blank" rel="noopener"><span class="open-label">npcs</span></a></td>
+            <td><a href="npcs.html" target="_blank" rel="noopener">estudantes, alumni e funcionários</a></td>
+            <td><a href="npcs.html" target="_blank" rel="noopener">em desenvolvimento</a></td>
+            <td><a href="npcs.html" target="_blank" rel="noopener">abrir arquivo ↗</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ============ CHAPTERS ============ -->
+    <section data-reveal="wipe-down">
+      <p class="section-heading"><strong>ARQUIVO DA HISTÓRIA.</strong></p>
+      <div class="chapter-list">
+        <a class="chapter-row" href="capitulo-01.html" target="_blank" rel="noopener"><span class="chapter-number">01.</span><span class="chapter-type">Prólogo</span><span class="chapter-title">&nbsp;</span></a>
+        <a class="chapter-row" href="capitulo-02.html" target="_blank" rel="noopener"><span class="chapter-number">02.</span><span class="chapter-type">Capítulo</span><span class="chapter-title">&nbsp;</span></a>
+        <a class="chapter-row" href="capitulo-03.html" target="_blank" rel="noopener"><span class="chapter-number">03.</span><span class="chapter-type">Capítulo</span><span class="chapter-title">&nbsp;</span></a>
+        <a class="chapter-row" href="capitulo-04.html" target="_blank" rel="noopener"><span class="chapter-number">04.</span><span class="chapter-type">Capítulo</span><span class="chapter-title">&nbsp;</span></a>
+        <a class="chapter-row" href="capitulo-05.html" target="_blank" rel="noopener"><span class="chapter-number">05.</span><span class="chapter-type">Capítulo</span><span class="chapter-title">&nbsp;</span></a>
+      </div>
+    </section>
+
+    
+    <div class="connection" data-reveal="fade-in" style="text-align:center; margin-top:1.8rem;">
+      <p style="text-transform:uppercase; font-size:0.78rem; letter-spacing:0.08em; line-height:1.8;">
+        Há tradições que sobrevivem porque são lembradas.<br>
+        Outras, porque ninguém ousa esquecê-las.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ============ BUTTON + CREDIT ============ -->
+    <div class="buttons" data-reveal="fade-in">
+      <a href="#top">entrar na iniciação</a>
+    </div>
+
+    <div class="credit">
+      <span>fourth moon · dark academia horror rpg</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Scroll-reveal engine — mirrors the Carrd "onvisible" effects (fade-in, wipe-down, wipe-right, flip-right)
+  const targets = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.25 });
+  targets.forEach(t => io.observe(t));
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    targets.forEach(t => t.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NPCs · Fourth Moon</title>
+<link href="https://fonts.googleapis.com/css2?display=swap&family=Archivo:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1424; --ink:#E9E3D6; --line:#B99A5B;
+    --mark-bg:#B99A5B; --mark-ink:#0D1424; --font:'Archivo', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1; -webkit-text-size-adjust:none; min-height:100vh; }
+  ul{list-style:none;}
+  a{color:inherit; text-decoration:underline; transition:color .25s ease;}
+  .site-wrapper{ display:flex; flex-direction:column; align-items:center; min-height:100vh; padding:4rem 1rem; }
+  .inner{ width:40rem; max-width:100%; }
+  .inner > * + *{ margin-top:2rem; }
+
+  .back-link{ display:block; text-align:center; text-transform:uppercase; font-size:0.72rem; letter-spacing:.15em; text-decoration:none; color:rgba(233,227,214,0.6); }
+  .back-link:hover{ color:#B99A5B; }
+
+  .divider{ display:flex; justify-content:center; align-items:center; min-height:1rem; }
+  .divider::before{ content:''; display:block; width:1px; height:4rem; background:var(--line); }
+
+  .eyebrow{ text-align:center; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.03em; line-height:2.5; color:#B99A5B; }
+  h1.title{ text-align:center; font-size:clamp(2.4rem, 8vw, 3.8rem); font-weight:900; letter-spacing:-0.045em; line-height:0.9; }
+  .url-line{ text-align:center; text-transform:uppercase; font-size:0.85rem; line-height:2.5; }
+
+  .section-heading{ font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; color:#B99A5B; font-weight:700; }
+  .section-sub{ font-size:.68rem; text-transform:none; color:rgba(233,227,214,.5); font-weight:400; letter-spacing:0; margin-left:.5rem; }
+
+  .table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table{ width:100%; border-collapse:collapse; text-align:left; text-transform:uppercase; font-size:0.72rem; }
+  thead{ border-bottom:2px solid var(--line); }
+  thead th{ font-weight:900; line-height:2.5; }
+  tbody tr{ border-top:1px solid rgba(233,227,214,0.24); transition:background .2s ease; }
+  tbody tr:first-child{ border-top:0; }
+  tbody tr:hover{ background:rgba(185,154,91,.08); }
+  td, th{ padding:0.5rem 0.6rem 0.5rem 0; line-height:1.5; }
+  td[contenteditable]:empty::before, th[contenteditable]:empty::before{ content:'—'; opacity:.3; }
+
+  .npc-card{ border:1px solid rgba(185,154,91,.35); padding:1.1rem 1.2rem; }
+  .npc-card .head{ display:flex; flex-wrap:wrap; gap:.6rem; align-items:baseline; margin-bottom:.4rem; text-transform:uppercase; font-size:.78rem; }
+  .npc-card .name{ font-weight:900; text-decoration:underline; }
+  .npc-card .role{ color:#B99A5B; font-size:.68rem; letter-spacing:.06em; }
+  .npc-card .desc{ font-size:.74rem; line-height:1.6; text-transform:none; color:rgba(233,227,214,.85); text-align:justify; }
+  .npc-card .desc:empty::before{ content:attr(data-placeholder); color:rgba(233,227,214,.35); }
+  .npc-grid{ display:flex; flex-direction:column; gap:1rem; }
+
+  .credit{ text-align:center; margin-top:0.75rem; }
+  .credit span{ font-size:0.7rem; color:rgba(233,227,214,0.5); }
+
+  .buttons{ display:flex; justify-content:center; }
+  .buttons a{
+    display:inline-block; height:2.5rem; line-height:2.5rem; padding:0 1.5rem;
+    text-transform:uppercase; font-size:0.78rem; letter-spacing:0.1em;
+    background:#B99A5B; color:#0D1424; text-decoration:none; font-weight:700;
+    transition:transform .25s ease;
+  }
+  .buttons a:hover{ transform:scale(1.06); }
+
+  [data-reveal]{ }
+  [data-reveal="fade-in"]{ opacity:0; transition:opacity 1s ease; }
+  [data-reveal="fade-in"].in{ opacity:1; }
+  [data-reveal="wipe-down"]{ opacity:0; clip-path:inset(0 0 100% 0); transition:opacity .6s ease, clip-path 1s ease; }
+  [data-reveal="wipe-down"].in{ opacity:1; clip-path:inset(0 0 0 0); }
+  [data-reveal="wipe-right"]{ opacity:0; clip-path:inset(0 100% 0 0); transition:opacity .6s ease, clip-path 1s ease; }
+  [data-reveal="wipe-right"].in{ opacity:1; clip-path:inset(0 0 0 0); }
+  @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1 !important; transform:none !important; clip-path:none !important; transition:none !important; } }
+  @media (max-width:640px){ .inner{ width:100%; } }
+</style>
+</head>
+<body>
+<div class="site-wrapper">
+  <div class="inner">
+
+    <a class="back-link" href="index.html">← voltar ao arquivo</a>
+
+    <div class="divider"></div>
+
+    <p class="eyebrow" data-reveal="flip-right">wellington university · registro</p>
+    <h1 class="title" data-reveal="wipe-right">NPCS</h1>
+    <p class="url-line" data-reveal="flip-right">estudantes, alumni e funcionários</p>
+
+    <div class="divider"></div>
+
+    <!-- ESTUDANTES -->
+    <div data-reveal="wipe-down">
+      <p class="section-heading">estudantes.<span class="section-sub">colegas de campus, sociedades e retiro</span></p>
+      <div class="npc-grid">
+        <div class="npc-card">
+          <div class="head"><span class="name" contenteditable="true">nome aqui.</span><span class="role" contenteditable="true">( sociedade / curso )</span></div>
+          <p class="desc" contenteditable="true" data-placeholder="breve descrição — quem é, o que representa na trama."></p>
+        </div>
+        <div class="npc-card">
+          <div class="head"><span class="name" contenteditable="true">nome aqui.</span><span class="role" contenteditable="true">( sociedade / curso )</span></div>
+          <p class="desc" contenteditable="true" data-placeholder="breve descrição — quem é, o que representa na trama."></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ALUMNI -->
+    <div data-reveal="wipe-down">
+      <p class="section-heading">alumni.<span class="section-sub">ex-integrantes, ainda ligados à tradição</span></p>
+      <div class="npc-grid">
+        <div class="npc-card">
+          <div class="head"><span class="name" contenteditable="true">nome aqui.</span><span class="role" contenteditable="true">( sociedade / geração )</span></div>
+          <p class="desc" contenteditable="true" data-placeholder="breve descrição — cargo atual, influência, relação com os protagonistas."></p>
+        </div>
+        <div class="npc-card">
+          <div class="head"><span class="name" contenteditable="true">nome aqui.</span><span class="role" contenteditable="true">( sociedade / geração )</span></div>
+          <p class="desc" contenteditable="true" data-placeholder="breve descrição — cargo atual, influência, relação com os protagonistas."></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FUNCIONÁRIOS -->
+    <div data-reveal="wipe-down">
+      <p class="section-heading">funcionários.<span class="section-sub">campus e ilha do retiro</span></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>nome</th><th>função</th><th>local</th><th>nota</th></tr></thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+            </tr>
+            <tr>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+            </tr>
+            <tr>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="buttons" data-reveal="fade-in">
+      <a href="index.html">voltar ao menu</a>
+    </div>
+
+    <div class="credit" data-reveal="fade-in"><span>registro de npcs · fourth moon</span></div>
+
+  </div>
+</div>
+
+<script>
+  const targets = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.2 });
+  targets.forEach(t => io.observe(t));
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ targets.forEach(t => t.classList.add('in')); }
+</script>
+</body>
+</html>
