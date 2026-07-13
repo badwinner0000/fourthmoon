@@ -86,28 +86,27 @@
 
     <p class="eyebrow" data-reveal="flip-right">fourth moon · manual de regras</p>
     <h1 class="title" data-reveal="wipe-right">SYSTEM</h1>
-    <p class="url-line" data-reveal="flip-right">sistema slasher modificado — d6</p>
+    <p class="url-line" data-reveal="flip-right">adaptado do sistema brutal rpg — d6</p>
 
     <div class="divider"></div>
 
     <!-- VISÃO GERAL -->
     <div data-reveal="wipe-down">
       <p class="section-heading">visão geral.</p>
-      <p class="body-text" contenteditable="true" data-placeholder="Descreva aqui a proposta geral do sistema: tom, ritmo das cenas, e como o mestre deve equilibrar mistério e perigo ao longo da campanha.">&nbsp;</p>
+      <p class="body-text" contenteditable="true">Fourth Moon usa uma versão adaptada do <strong>Brutal RPG</strong> — um sistema de terror slasher com dados de 6 lados, onde cada dado na sua mão é literalmente uma chance de sobreviver. Aqui, o papel do "assassino" pertence ao <strong>Caçador</strong>: o instrumento do Benfeitor, ativado sempre que o pacto exige o pagamento de uma dívida. Fora dos encontros diretos com ele, o jogo funciona como drama de dark academia — rivalidades, política de sociedade secreta, sedução e mérito. Dentro de um encontro, vira sobrevivência pura.</p>
     </div>
 
     <div class="divider"></div>
 
     <!-- ATRIBUTOS -->
     <div data-reveal="wipe-down">
-      <p class="section-heading">atributos.<span class="section-sub">seis atributos, testados com dados de seis lados (d6)</span></p>
+      <p class="section-heading">atributos.<span class="section-sub">cinco atributos, testados com dados de seis lados (d6)</span></p>
       <div class="stat-grid">
-        <div class="stat"><div class="k">força</div><div class="desc" contenteditable="true">capacidade física, combate corpo a corpo, resistir e impor força bruta.</div></div>
-        <div class="stat"><div class="k">agilidade</div><div class="desc" contenteditable="true">velocidade, reflexos, furtividade e fuga.</div></div>
-        <div class="stat"><div class="k">instinto</div><div class="desc" contenteditable="true">percepção, intuição, leitura de perigo e de pessoas.</div></div>
-        <div class="stat"><div class="k">presença</div><div class="desc" contenteditable="true">carisma, persuasão, influência social dentro das sociedades.</div></div>
-        <div class="stat"><div class="k">sanidade</div><div class="desc" contenteditable="true">estabilidade mental diante do horror e do sobrenatural.</div></div>
-        <div class="stat"><div class="k">resistência</div><div class="desc" contenteditable="true">vitalidade, capacidade de suportar dano e continuar em cena.</div></div>
+        <div class="stat"><div class="k">força</div><div class="desc" contenteditable="true">impor-se fisicamente numa sala, sobreviver a uma noite ruim na ilha, resistir quando o Caçador aparece.</div></div>
+        <div class="stat"><div class="k">agilidade</div><div class="desc" contenteditable="true">escapar pela mata do retiro, se esgueirar por um corredor da sociedade depois do toque de recolher, reflexos sob pressão.</div></div>
+        <div class="stat"><div class="k">carisma</div><div class="desc" contenteditable="true">política de sociedade secreta, sedução, discursos ensaiados, o jogo social que decide quem sobe e quem cai em desgraça.</div></div>
+        <div class="stat"><div class="k">vigor</div><div class="desc" contenteditable="true">aguentar quatro dias de retiro sem dormir direito, resistir à pressão da família, continuar de pé depois de um ferimento.</div></div>
+        <div class="stat"><div class="k">inteligência</div><div class="desc" contenteditable="true">decifrar os segredos que a Argent e a Nyx escondem há séculos, argumentação, ler nas entrelinhas o que ninguém diz em voz alta.</div></div>
       </div>
     </div>
 
@@ -116,34 +115,117 @@
     <!-- MECÂNICA DE TESTE -->
     <div data-reveal="wipe-down">
       <p class="section-heading">mecânica de teste.</p>
-      <p class="body-text" contenteditable="true" data-placeholder="Explique aqui como um teste funciona: quantos d6 são rolados (atributo + modificadores), o que conta como sucesso, e como funcionam sucessos críticos ou falhas críticas.">&nbsp;</p>
+      <p class="body-text" contenteditable="true">Todo personagem recebe uma pilha de <strong>seis dados D6</strong>, que nunca deve passar dessa quantidade. Quando um teste for pedido pelo mestre, o jogador anuncia quantos dados de sua pilha deseja arriscar, seguindo o atributo pedido (Força, Agilidade, Carisma, Vigor ou Inteligência), e rola essa quantidade.</p>
+      <p class="body-text" contenteditable="true" style="margin-top:.8rem;">A <strong>dificuldade padrão</strong> de todo teste é <strong>4</strong> — cada dado que iguala ou supera esse valor é um sucesso. A dificuldade cai para <strong>3</strong> se o personagem tiver <strong>especialidade</strong> no atributo usado (ver arquétipos, mais abaixo).</p>
       <div class="table-wrap" style="margin-top:1rem;">
         <table>
           <thead><tr><th>resultado do dado</th><th>efeito</th></tr></thead>
           <tbody>
-            <tr><td contenteditable="true">1</td><td contenteditable="true">falha crítica</td></tr>
-            <tr><td contenteditable="true">2 – 3</td><td contenteditable="true">falha</td></tr>
-            <tr><td contenteditable="true">4 – 5</td><td contenteditable="true">sucesso parcial</td></tr>
-            <tr><td contenteditable="true">6</td><td contenteditable="true">sucesso total</td></tr>
+            <tr><td contenteditable="true">≥ dificuldade (4, ou 3 com especialidade)</td><td contenteditable="true">sucesso — o dado permanece na mão</td></tr>
+            <tr><td contenteditable="true">abaixo da dificuldade</td><td contenteditable="true">falha — o dado é removido da mão (sacrificado ou descartado)</td></tr>
           </tbody>
         </table>
+      </div>
+      <p class="body-text" contenteditable="true" style="margin-top:1rem;"><strong>Dados sacrificados:</strong> na maioria das falhas, o dado vai direto para o Mestre, engordando a pilha do Caçador. <strong>Dados descartados:</strong> em vez disso, o dado vai para o centro da mesa e não pertence a mais ninguém — isso acontece sempre em Testes de Susto e durante encontros. Se um personagem perde seu último dado, a ação é um <strong>desastre</strong>: ele não pode mais realizar testes e morre no início do próximo encontro.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PONTOS DE SHOT -->
+    <div data-reveal="wipe-down">
+      <p class="section-heading">pontos de shot.</p>
+      <p class="body-text" contenteditable="true">Recompensas dadas pelo mestre por desafios cumpridos, dentro ou fora da narrativa. Funcionam como um saldo que se gasta para comprar vantagens fora de cenas de encontro. Negocie livremente com o mestre desafios alternativos que façam sentido pra mesa de vocês.</p>
+      <div class="trait-grid" style="margin-top:1rem;">
+        <div class="trait"><div class="name">choque de realidade</div><div class="desc" contenteditable="true">gastando 6 Pontos de Shot, compre um dado a mais para sua pilha.</div></div>
+        <div class="trait"><div class="name">cuidar de feridas</div><div class="desc" contenteditable="true">gaste Pontos de Shot para reduzir o valor de Ferida de alguém, na mesma quantidade gasta.</div></div>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- SANIDADE & ESTRESSE -->
+    <!-- O CAÇADOR -->
     <div data-reveal="wipe-down">
-      <p class="section-heading">sanidade & estresse.</p>
-      <p class="body-text" contenteditable="true" data-placeholder="Descreva como o estresse é acumulado (exposição ao horror, presenciar mortes, rituais) e o que acontece quando a sanidade de um personagem chega a zero.">&nbsp;</p>
+      <p class="section-heading">o caçador.</p>
+      <p class="body-text" contenteditable="true">Controlado pelo Mestre, o Caçador é colocado em ação a qualquer momento — o braço do pacto com o Benfeitor, ativo sempre que a dívida precisa ser cobrada. Ele possui sua própria reserva, começando com <strong>5 dados</strong>, e fica mais forte a cada erro de suas vítimas: cada <strong>falha</strong> de um teste resulta em <strong>um dado a mais</strong> para o Caçador. Enquanto espreita pelos cantos, ele se fortalece através dos deslizes do grupo — uma rivalidade mal resolvida, uma pista que ninguém encontrou.</p>
+      <p class="body-text" contenteditable="true" style="margin-top:.8rem;">O Caçador pode <strong>matar</strong> qualquer personagem com menos dados do que ele durante um <strong>encontro</strong>, gastando apenas <strong>2 dados de sua própria pilha</strong>. Se não tiver dados suficientes para matar ou ferir ninguém, a cena acaba e ele desaparece — por enquanto.</p>
     </div>
 
     <div class="divider"></div>
 
-    <!-- PERSEGUIÇÃO E COMBATE -->
+    <!-- ELE CHEGOU -->
     <div data-reveal="wipe-down">
-      <p class="section-heading">perseguição & combate.</p>
-      <p class="body-text" contenteditable="true" data-placeholder="Explique como funcionam cenas de perseguição (rodadas, testes de agilidade vs. instinto do perseguidor) e combate direto (dano, iniciativa, cobertura).">&nbsp;</p>
+      <p class="section-heading">ele chegou!</p>
+      <p class="body-text" contenteditable="true">Em determinado momento os personagens percebem que há um grande perigo — a ameaça está próxima e chegará em breve. Fora de um encontro direto, o Caçador tem três formas de agir:</p>
+      <div class="trait-grid" style="margin-top:1rem;">
+        <div class="trait"><div class="name">assustar</div><div class="desc" contenteditable="true">deixando corpos, mensagens e sinais espalhados pelo local, ele provoca um Teste de Susto. Até 3 sustos por encontro.</div></div>
+        <div class="trait"><div class="name">matar</div><div class="desc" contenteditable="true">durante um encontro, usa a ação para matar friamente quem tiver menos dados que ele, descartando 2 dados da própria pilha.</div></div>
+        <div class="trait"><div class="name">ferir</div><div class="desc" contenteditable="true">gasta e rola um de seus dados, causando um ferimento profundo. O valor rolado vira o nível da Ferida — novos acertos somam a esse valor, e o personagem morre se chegar a 6.</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SOBREVIVENDO E FUGINDO -->
+    <div data-reveal="wipe-down">
+      <p class="section-heading">sobrevivendo & fugindo.</p>
+      <p class="body-text" contenteditable="true">Quando um encontro com o Caçador começa, os personagens escolhem uma ação por rodada:</p>
+      <div class="trait-grid" style="margin-top:1rem;">
+        <div class="trait"><div class="name">vazar dali</div><div class="desc" contenteditable="true">teste de Agilidade. Cada sucesso vira um Dado de Fuga — te aproxima da fuga, mas não garante nada.</div></div>
+        <div class="trait"><div class="name">partir para cima</div><div class="desc" contenteditable="true">teste de Força para ferir o Caçador. Em caso de sucesso, ele descarta um dado.</div></div>
+        <div class="trait"><div class="name">arriscar tudo</div><div class="desc" contenteditable="true">desfaz-se de todos os seus dados para garantir a fuga nesse encontro. Só uma vez por cena.</div></div>
+        <div class="trait"><div class="name">ajudar alguém</div><div class="desc" contenteditable="true">testa o atributo escolhido; os sucessos são doados diretamente para o personagem escolhido.</div></div>
+      </div>
+      <p class="body-text" contenteditable="true" style="margin-top:1rem;">Para escapar de vez, é preciso acumular <strong>4 Dados de Fuga</strong> em testes de Vazar Dali. Eles também podem ser usados em outros testes durante o encontro — mas gastá-los significa arriscar sua própria fuga.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- INICIATIVA E SUSTO -->
+    <div data-reveal="wipe-down">
+      <p class="section-heading">iniciativa & teste de susto.</p>
+      <p class="body-text" contenteditable="true">A ordem das ações é definida pelo arquétipo do personagem, com o Caçador agindo sempre por último: Líder Nato → Atleta → Herdeiro(a) → Queridinho(a) → Ingênuo(a) → Bolsista → Boêmio(a) → Cético → Caçador.</p>
+      <p class="body-text" contenteditable="true" style="margin-top:.8rem;">Nos momentos mais tensos, até o ranger do assoalho pode fazer os personagens pularem de medo. Um <strong>Teste de Susto</strong> é pedido sempre que uma cena chocar o grupo: todos rolam 1d6 e <strong>descartam</strong> o dado em caso de falha.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ARQUÉTIPOS -->
+    <div data-reveal="wipe-down">
+      <p class="section-heading">arquétipos.<span class="section-sub">cada um com duas especialidades e uma habilidade única — repaginados pra wellington university</span></p>
+      <div class="trait-grid" style="margin-top:1rem;">
+        <div class="trait">
+          <div class="name">atleta</div>
+          <div class="desc" contenteditable="true">Capitão do time de remo, esgrima ou lacrosse — os esportes "certos" pra quem circula entre as sociedades. Acostumado a explorar os limites do próprio corpo.<br><em>Especialidades: Força, Agilidade.</em><br><strong>Home Run!:</strong> numa cena de encontro, durante seu turno, pode comprar uma vantagem com Pontos de Shot. Uma vez por encontro.</div>
+        </div>
+        <div class="trait">
+          <div class="name">queridinho(a) <span style="font-size:.6em; opacity:.6; text-transform:none;">(esbelto, adaptado)</span></div>
+          <div class="desc" contenteditable="true">Extremamente atraente e transita fácil entre Argent e Nyx — a beleza (e o charme) trouxeram benefícios sociais reais dentro do campus.<br><em>Especialidades: Vigor, Carisma.</em><br><strong>Eu Sou o Melhor!:</strong> ganha 1 Ponto de Shot ao tirar 6 em seus testes.</div>
+        </div>
+        <div class="trait">
+          <div class="name">ingênuo(a) <span style="font-size:.6em; opacity:.6; text-transform:none;">(inocente, adaptado)</span></div>
+          <div class="desc" contenteditable="true">Ainda acredita na tradição pelo que ela diz ser, não pelo que esconde. Boa pessoa e confiável — o grupo não quer vê-la se dar mal no meio disso tudo.<br><em>Especialidades: Inteligência, Carisma.</em><br><strong>Me Ajudem!:</strong> uma vez por encontro, quando alguém usa Ajudar Alguém nela, essa pessoa não perde os dados doados.</div>
+        </div>
+        <div class="trait">
+          <div class="name">bolsista <span style="font-size:.6em; opacity:.6; text-transform:none;">(nerd, adaptado)</span></div>
+          <div class="desc" contenteditable="true">Entrou na Wellington por mérito, não por sobrenome — não tem tempo pra andar com a galera popular, ocupado demais com a cabeça enfiada nos livros.<br><em>Especialidades: Inteligência, Agilidade.</em><br><strong>Por Nada!:</strong> uma vez por encontro, pode rerrolar seu menor dado.</div>
+        </div>
+        <div class="trait">
+          <div class="name">líder nato <span style="font-size:.6em; opacity:.6; text-transform:none;">(herói, adaptado)</span></div>
+          <div class="desc" contenteditable="true">O nome que a sociedade já aponta como "o próximo" — nascido pra liderar, mesmo quando não pediu por isso.<br><em>Especialidades e habilidade: a definir — veio salvar o dia.</em></div>
+        </div>
+        <div class="trait">
+          <div class="name">herdeiro(a) <span style="font-size:.6em; opacity:.6; text-transform:none;">(valentão, adaptado)</span></div>
+          <div class="desc" contenteditable="true">Domina pelo peso do sobrenome, não pela força — acostumado a nunca ouvir um "não" na vida.<br><em>Especialidades e habilidade: a definir — ninguém mexe com ele.</em></div>
+        </div>
+        <div class="trait">
+          <div class="name">boêmio(a) <span style="font-size:.6em; opacity:.6; text-transform:none;">(relaxado, adaptado)</span></div>
+          <div class="desc" contenteditable="true">Trust-fund descolado — está ali, mas a política de sociedade secreta não é bem o assunto favorito dele(a).<br><em>Especialidades e habilidade: a definir — "hã? o quê?"</em></div>
+        </div>
+        <div class="trait">
+          <div class="name">cético</div>
+          <div class="desc" contenteditable="true">Cumpre o protocolo, participa dos rituais, mas por dentro desconfia abertamente de cada tradição que a família trata como sagrada.<br><em>Especialidades e habilidade: a definir — "isso não tá acontecendo!"</em></div>
+        </div>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -151,11 +233,7 @@
     <!-- FERIMENTOS -->
     <div data-reveal="wipe-down">
       <p class="section-heading">ferimentos & morte.</p>
-      <div class="trait-grid">
-        <div class="trait"><div class="name">leve</div><div class="desc" contenteditable="true">penalidade menor, recupera com descanso.</div></div>
-        <div class="trait"><div class="name">grave</div><div class="desc" contenteditable="true">penalidade significativa, exige atenção médica.</div></div>
-        <div class="trait"><div class="name">crítico</div><div class="desc" contenteditable="true">risco de morte; teste de resistência necessário.</div></div>
-      </div>
+      <p class="body-text" contenteditable="true">O valor de <strong>Ferida</strong> de um personagem sobe conforme o Caçador acerta ataques de Ferir. Ele morre se a Ferida chegar a <strong>6</strong>. Gastar Pontos de Shot em "Cuidar de Feridas" reduz esse valor.</p>
     </div>
 
     <div class="divider"></div>
@@ -164,7 +242,7 @@
       <a href="index.html">voltar ao menu</a>
     </div>
 
-    <div class="credit" data-reveal="fade-in"><span>manual de sistema · fourth moon</span></div>
+    <div class="credit" data-reveal="fade-in"><span>manual de sistema · fourth moon · adaptado de brutal rpg</span></div>
 
   </div>
 </div>

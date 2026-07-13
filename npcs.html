@@ -42,6 +42,10 @@
   td[contenteditable]:empty::before, th[contenteditable]:empty::before{ content:'—'; opacity:.3; }
 
   .npc-card{ border:1px solid rgba(185,154,91,.35); padding:1.1rem 1.2rem; }
+  .npc-card.with-photo{ display:flex; gap:1.2rem; align-items:flex-start; justify-content:space-between; }
+  .npc-card.with-photo .npc-text{ flex:1; min-width:0; }
+  .npc-photo{ width:100px; height:100px; flex-shrink:0; border:1px solid #B99A5B; object-fit:cover; }
+  .npc-faceclaim{ display:inline-block; font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:#B99A5B; font-weight:700; margin-bottom:.5rem; }
   .npc-card .head{ display:flex; flex-wrap:wrap; gap:.6rem; align-items:baseline; margin-bottom:.4rem; text-transform:uppercase; font-size:.78rem; }
   .npc-card .name{ font-weight:900; text-decoration:underline; }
   .npc-card .role{ color:#B99A5B; font-size:.68rem; letter-spacing:.06em; }
@@ -69,7 +73,7 @@
   [data-reveal="wipe-right"]{ opacity:0; clip-path:inset(0 100% 0 0); transition:opacity .6s ease, clip-path 1s ease; }
   [data-reveal="wipe-right"].in{ opacity:1; clip-path:inset(0 0 0 0); }
   @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1 !important; transform:none !important; clip-path:none !important; transition:none !important; } }
-  @media (max-width:640px){ .inner{ width:100%; } }
+  @media (max-width:640px){ .inner{ width:100%; } .npc-card.with-photo{ flex-direction:column-reverse; } .npc-photo{ align-self:flex-start; } }
 </style>
 </head>
 <body>
@@ -90,9 +94,13 @@
     <div data-reveal="wipe-down">
       <p class="section-heading">estudantes.<span class="section-sub">colegas de campus, sociedades e retiro</span></p>
       <div class="npc-grid">
-        <div class="npc-card">
-          <div class="head"><span class="name" contenteditable="true">nome aqui.</span><span class="role" contenteditable="true">( sociedade / curso )</span></div>
-          <p class="desc" contenteditable="true" data-placeholder="breve descrição — quem é, o que representa na trama."></p>
+        <div class="npc-card with-photo">
+          <div class="npc-text">
+            <div class="head"><span class="name" contenteditable="true">weston montgomery.</span><span class="role" contenteditable="true">( argent society / direito, 23 anos )</span></div>
+            <p class="npc-faceclaim" contenteditable="true">Faceclaim: Patrick Schwarzenegger</p>
+            <p class="desc" contenteditable="true">Filho de um ex-presidente, presidente da Argent Society e tratado pela família como o próximo grande nome dos Montgomery — o tipo que já nasce sendo cobrado pra ser exatamente o herói que todo mundo espera. É carismático de um jeito quase injusto: entra numa sala e a sala já é dele. O problema é que não é lá muito esperto — bem burro, mesmo, do tipo que erra o óbvio — só que ninguém repara, porque o sobrenome fala mais alto que qualquer prova que ele tire. No fim das contas, importa mais quem é o pai dele do que quanto ele realmente sabe.</p>
+          </div>
+          <img class="npc-photo" src="https://placehold.co/100x100/10182b/B99A5B?text=." alt="Foto de Weston Montgomery">
         </div>
         <div class="npc-card">
           <div class="head"><span class="name" contenteditable="true">nome aqui.</span><span class="role" contenteditable="true">( sociedade / curso )</span></div>
